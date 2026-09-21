@@ -94,6 +94,14 @@ function closeAllDropdowns(event) {
 }
 
 function extractErrorMessages(errorObject) {
+    if (typeof errorObject === "string") {
+        return [errorObject];
+    }
+
+    if (!errorObject || typeof errorObject !== "object") {
+        return ["The server returned an unexpected error."];
+    }
+
     let errorMessages = [];
 
     for (let key in errorObject) {

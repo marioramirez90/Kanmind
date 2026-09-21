@@ -120,8 +120,14 @@ async function postData(endpoint, data) {
             headers: header,
             body: JSON.stringify(data)
         });
-        
-        const responseData = await response.json();
+
+        const responseText = await response.text();
+        let responseData;
+        try {
+            responseData = responseText ? JSON.parse(responseText) : null;
+        } catch (parseError) {
+            responseData = responseText;
+        }
         return {
             ok: response.ok,
             status: response.status,

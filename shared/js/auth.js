@@ -30,7 +30,10 @@ async function signUpSubmit(event) {
 async function registration(data) {
     let response = await postData(REGISTER_URL, data);
     if (!response.ok) {
-        console.error("Registration failed:", response.data);
+        console.error("Registration failed:", {
+            status: response.status,
+            response: response.data
+        });
         let errorArr = extractErrorMessages(response.data)
         showToastMessage(true, errorArr)
     } else {
