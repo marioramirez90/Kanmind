@@ -3,7 +3,7 @@ const GUEST_LOGIN = {
     "password": "asdasdasd"
 }
 
-const API_BASE_URL = 'https://api.marioramirez.de/api/';
+const API_BASE_URL = '/projekte/kanmind/api/';
 
 const LOGIN_URL = 'login/';
 
