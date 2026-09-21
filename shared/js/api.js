@@ -89,7 +89,7 @@ function getFormData(form){
 
 async function getData(endpoint) {
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        const response = await fetch(`${API_URL}${endpoint}`, {
             method: 'GET',
             headers: createHeaders(),
         });
@@ -115,7 +115,7 @@ async function postData(endpoint, data) {
     let header = isAuthRequest ? { 'Accept': 'application/json' } : createHeaders();
     header['Content-Type'] = 'application/json';
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        const response = await fetch(`${API_URL}${endpoint}`, {
             method: 'POST',
             headers: header,
             body: JSON.stringify(data)
@@ -143,7 +143,7 @@ async function patchData(endpoint, data) {
     let header = createHeaders();
     header['Content-Type'] = 'application/json';
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        const response = await fetch(`${API_URL}${endpoint}`, {
             method: 'PATCH',
             headers: header,
             body: JSON.stringify(data)
@@ -168,7 +168,7 @@ async function patchData(endpoint, data) {
 
 async function deleteData(endpoint) {
     try {
-        const response = await fetch(`${API_BASE_URL}${endpoint}`, {
+        const response = await fetch(`${API_URL}${endpoint}`, {
             method: 'DELETE',
             headers: createHeaders(),
         });

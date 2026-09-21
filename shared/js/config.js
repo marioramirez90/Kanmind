@@ -3,7 +3,7 @@ const GUEST_LOGIN = {
     "password": "asdasdasd"
 }
 
-const API_BASE_URL = '/projekte/kanmind/api/';
+const API_URL = "https://kanmind-backend-jdkc.onrender.com/api/";
 
 const LOGIN_URL = 'login/';
 
