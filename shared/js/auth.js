@@ -9,13 +9,28 @@ async function signUpSubmit(event) {
     event.preventDefault();
     let isFormValid = validateSignUp();
     if (isFormValid) {
-        registration(signUpValues)
+        const fullname = document.getElementById("fullname").value.trim();
+        const email = document.getElementById("email").value.trim();
+        const password = document.getElementById("password").value;
+        const repeatedPassword = document.getElementById("repeated_password").value;
+
+        if (!fullname || !email || password !== repeatedPassword) {
+            return;
+        }
+
+        registration({
+            fullname,
+            email,
+            password,
+            repeated_password: repeatedPassword
+        });
     }
 }
 
 async function registration(data) {
     let response = await postData(REGISTER_URL, data);
     if (!response.ok) {
+        console.error("Registration failed:", response.data);
         let errorArr = extractErrorMessages(response.data)
         showToastMessage(true, errorArr)
     } else {
@@ -120,7 +135,7 @@ function validateEmail(element) {
 
 function validateSignUp() {
     validateFullname(document.getElementById("fullname"))
-    validateEmail(document.getElementById("email"))
+    validateRegistrationEmail(document.getElementById("email"))
     validatePW(document.getElementById("password"))
     validateConfirmPW(document.getElementById("repeated_password"))
     validatePrivacyCheckbox(document.getElementById("privacy_policy_checkbox"))
